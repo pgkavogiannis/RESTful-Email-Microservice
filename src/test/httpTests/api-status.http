@@ -1,0 +1,10 @@
+###
+GET {{basePath}}/status
+Content-Type: application/json
+
+> {%
+client.test("API status is OK", () => {
+  client.assert(response.status === 200, "Service Unavailable");
+  client.assert(response.body === "OK", "Invalid Response");
+});
+%}

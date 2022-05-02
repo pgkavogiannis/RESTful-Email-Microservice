@@ -1,0 +1,22 @@
+### Test english locale
+GET {{basePath}}/test/i18n
+Content-Type: application/json
+
+> {%
+client.test("English text should be returned without Accept-Language header", () => {
+  client.assert(response.status === 200, "Service Unavailable");
+  client.assert(response.body === "This is a check mail send to you by", "Invalid Response");
+});
+%}
+
+### Test greek locale
+GET {{basePath}}/test/i18n
+Content-Type: application/json
+Accept-Language: gr
+
+> {%
+client.test("Greek text should be returned with Accept-Language header equal to 'gr'", () => {
+  client.assert(response.status === 200, "Service Unavailable");
+  client.assert(response.body === "Δοκιμαστικό μήνυμα από τον αποστολέα", "Invalid Response");
+});
+%}

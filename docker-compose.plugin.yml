@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  email-microservice-plugin:
+    container_name: email-microservice-plugin
+    image: registry.gitlab.com/public-programming-projects/email-microservice
+    environment:
+      - "SPRING_PROFILES_ACTIVE=dev"
+    ports:
+      - "7000:7000"
+      - "7001:7001"

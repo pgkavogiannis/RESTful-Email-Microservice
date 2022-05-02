@@ -1,0 +1,15 @@
+### Send mail without subject and body
+POST {{basePath}}/test/mail
+Content-Type: application/json
+
+{
+  "sender": "testSender@mailnator.com",
+  "recipients": ["pgkavogiannis@mailnator.com", "federick@mailnator.com"]
+}
+
+> {%
+client.test("Mail check is ok", () => {
+  client.assert(response.status === 200, "Service Unavailable");
+  client.assert(response.body === "OK", "Invalid Response");
+});
+%}

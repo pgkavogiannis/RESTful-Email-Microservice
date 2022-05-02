@@ -1,0 +1,10 @@
+###
+GET {{basePath}}/test/profile
+Content-Type: application/json
+
+> {%
+client.test("Active profile is 'dev'", () => {
+  client.assert(response.status === 200, "Service Unavailable");
+  client.assert(response.body === "dev", "Invalid Response");
+});
+%}

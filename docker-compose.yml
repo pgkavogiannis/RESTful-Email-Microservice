@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  email-microservice:
+    container_name: email-microservice
+    build: .
+    environment:
+      - "SPRING_PROFILES_ACTIVE=dev"
+    ports:
+      - "7000:7000"
+      - "7001:7001"

@@ -1,0 +1,33 @@
+### Send email with full info
+POST {{basePath}}/mail
+Content-Type: application/json
+
+{
+  "sender": "testSender@mailnator.com",
+  "recipients": ["pgkavogiannis@mailnator.com", "federick@mailnator.com"],
+  "mailSubject": "Mail Check",
+  "mailBody": "This is a check mail send to you by testSender@mailnator.com."
+}
+
+> {%
+client.test("Mail check is ok", () => {
+  client.assert(response.status === 200, "Service Unavailable");
+  client.assert(response.body === "OK", "Invalid Response");
+});
+%}
+
+### Send mail without subject and body
+POST {{basePath}}/mail
+Content-Type: application/json
+
+{
+  "sender": "testSender@mailnator.com",
+  "recipients": ["pgkavogiannis@mailnator.com", "federick@mailnator.com"]
+}
+
+> {%
+client.test("Mail check is ok", () => {
+  client.assert(response.status === 200, "Service Unavailable");
+  client.assert(response.body === "OK", "Invalid Response");
+});
+%}

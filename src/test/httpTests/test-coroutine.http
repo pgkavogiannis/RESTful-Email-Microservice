@@ -1,0 +1,10 @@
+### Checks that api responses immediately without waiting for coroutine execution
+GET {{basePath}}/test/coroutine
+Content-Type: application/json
+
+> {%
+client.test("Test coroutines async execution", () => {
+    client.assert(response.status === 200, "Service Unavailable");
+    client.assert(Number(response.body) === 1, "Invalid Response");
+});
+%}
